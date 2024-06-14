@@ -1,0 +1,37 @@
+
+
+<br>
+<br>
+<div style="text-align: center;">
+  <span >Sort the list based on : </span>
+<select [(ngModel)]="sortOption">
+  <option value="prodName">Product Name</option>
+  <option value="price">Price</option>
+</select>
+</div>
+<br>
+<table class="table container table-success table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Code</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Product Price</th>
+    
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of mobiles | sort: sortOption">
+    <tr>
+        <td scope="row">{{item.productId}}</td>
+        <td>{{item.productName}}</td>
+        <td>{{item.productCode}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price}}</td>
+    </tr>
+
+    </tbody>
+  </table>
+
+ 
+ 
