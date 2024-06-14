@@ -109,3 +109,36 @@ $ ng test
 Jasmine is integrated seamlessly with the Angular CLI, so we don't need to perform additional setup steps for Jasmine itself beyond what's provided by the Angular CLI.
 ===
 
+
+
+Unit Testing Angular with Jasmine:
+===
+Below is the execution flow of the command ng test: 
+• Angular CLI reads the configuration in the ‘angular.json’ file to determine which project and testing setup to use.
+• Then Angular CLI sets up a test environment using TestBed. TestBed is a part of Angular's testing utilities that allow you to configure and create instances of components and services for testing.
+• Karma, a popular test runner, to execute tests based on the settings in the 'karma.config.js' file. This configuration includes specifying which browsers to run the tests.
+• Jasmine, the testing framework, takes over. It starts executing the test spec files(files with ‘.spec.ts' extensions) and runs the test suites and individual test cases.
+• The ‘ng test’ command returns an exit status to indicate whether all tests passed or if there were failures of errors.
+
+Angular Utilities:
+TestBed
+• It is the Angular testing utility that provides the mock of the application’s root module: @NgModule
+
+configureTestingModule:
+• This method configures the module environment for the component class to be tested.
+• It is called within beforeEach so that TestBed resets itself to the base state before each spec runs.
+• Note: the class to be tested is detached from its application module and is reattached to a dynamically constructed Angular test module.
+• configureTestingModule method declares the component to be tested.
+
+TestBed: createComponent
+• It is the Angular testing utility method that returns the instance of the component class being tested.
+• It returns the object of type Component Fixture.
+• It closes the current TestBed instance for any further configurations.
+• ComponentFixture is the handle provided on the instance of the component under test.
+
+TestBed: detectChanges
+• It is the Angular testing utility method that is responsible for detecting any angular change within a test.
+• fixture.detectChanges() helps test to convey to Angular when to perform the detection.
+• Note: Do not re-configure TestBed after calling createComponent.
+• The TestBed.createComponent does not trigger change detection.
+
