@@ -1,0 +1,38 @@
+Introduction to Unit Testing:
+===
+Angular Unit Testing is crucial for ensuring the reliability, stability, and maintainability of your application. It helps catch bugs early, provides a safety net for code changes, and enhances code quality.
+When using Jasmine for Angular unit testing, developers focus on testing individual components or services in isolation.
+
+Test suites, created with the describe function, group related test cases. Individual test cases (specs) are defined using the it function. This structure helps organize and categorize tests based on functionality.
+
+In Unit Testing, it's crucial to avoid reliance on external services, APIs, or databases. Instead, use test doubles like mocks or stubs to simulate the behavior of dependencies. This ensures that tests focus on the specific functionality of the unit being tested.
+
+Jasmine provides various matchers, such as toEqual and toBe, for asserting expectations in test cases. These matchers allow developers to check if the actual result matches the expected result, ensuring the correctness of the tested functionality.
+
+Some commonly used Jasmine matchers in Angular testing:
+• toEqual: Tests for deep equality (used for objects and arrays).
+• toBe: Tests for strict equality (used for primitives like numbers, strings, and booleans).
+• toContain: Checks if an array or string contains a specific value.
+• toBeTruthy: Checks if a value is truthy (not falsy).
+• toBeFalsy: Checks if a value is falsy (not truthy).
+• toBeGreaterThan, toBeLessThan, toBeCloseTo: Used for numeric comparisons.
+expect(actualValue).toBeCloseTo(expectedValue, decimalPlaces);
+• toThrow: Checks if a function throws an exception.
+expect(() => someFunction()).toThrow();
+• toHaveBeenCalled, toHaveBeenCalledWith: Checks if a spy (mocked function) has been called or called with specific arguments.
+expect(spy).toHaveBeenCalled();
+expect(spy).toHaveBeenCalledWith(arg1, arg2);
+
+Assertion statements are written using the expect function. This function sets up the value or expression to be tested and is followed by a matcher function that performs the comparison between the actual and expected values.
+
+Jasmine offers functions like beforeEach, afterEach, beforeAll, and afterAll for setting up and tearing down activities before and after test execution. These functions help create a consistent and controlled environment for testing.
+
+Jasmine Global Functions for Setup and Teardown Activities:
+• beforeEach
+• afterEach
+• beforeAll
+• afterAll
+
+Well-written unit tests contribute to better documentation, increased code confidence, and faster identification of issues. They lead to a more stable and reliable Angular application, providing assurance that the application functions as intended.
+===
+
