@@ -36,3 +36,76 @@ Jasmine Global Functions for Setup and Teardown Activities:
 Well-written unit tests contribute to better documentation, increased code confidence, and faster identification of issues. They lead to a more stable and reliable Angular application, providing assurance that the application functions as intended.
 ===
 
+
+
+Setup:
+===
+Install following tools:
+• Node.js (^18.15.0 || ^20.9.0) and npm (min version required 10.1.0) 
+• Angular CLI (v16)
+• Visual Studio Code
+
+• Jasmine and Karma are essential tools for testing Angular applications. 
+• Karma is the test runner for Angular applications. It will run your Jasmine tests in various browsers and provide you with test results in the terminal. You can also view test results in a browser window by default.
+• Both Jasmine and Karma are already included by default when you create a new Angular project with the Angular CLI. 
+• If you need to install them manually, you can do so with npm, using the below command;
+$ npm install --save jasmine karma karma-jasmine karma-chrome-launcher
+
+app.component.spec.ts
+==
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'testing' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('testing');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, testing');
+  });
+});
+==
+
+login.service.spec.ts
+==
+import { TestBed } from '@angular/core/testing';
+
+import { LoginService } from './login.service';
+
+describe('LoginService', () => {
+  let service: LoginService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(LoginService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
+==
+
+$ ng test
+
+Jasmine is integrated seamlessly with the Angular CLI, so we don't need to perform additional setup steps for Jasmine itself beyond what's provided by the Angular CLI.
+===
+
