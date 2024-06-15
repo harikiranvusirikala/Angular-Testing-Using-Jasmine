@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WelcomeComponent } from './welcome.component';
 
@@ -19,9 +19,9 @@ describe('WelcomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have title on the page', async(() => {
+  it('should have title on the page', () => {
 		const fixture = TestBed.createComponent(WelcomeComponent);
 		const comp = fixture.debugElement.componentInstance;
 		expect(comp.title).toEqual('Welcome');
-	  }));
+	  });
 });
