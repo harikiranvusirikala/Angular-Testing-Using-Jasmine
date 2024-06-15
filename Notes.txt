@@ -142,3 +142,20 @@ TestBed: detectChanges
 • Note: Do not re-configure TestBed after calling createComponent.
 • The TestBed.createComponent does not trigger change detection.
 
+Testing an Angular component which has a service dependency:
+A component-under-test doesn't have to be injected with real services as it is Unit Testing. A test-double or stub instead can be provided.
+
+Eg: login.component.spec.ts
+  mockLoginService = jasmine.createSpyObj('LoginService',['getUsers']);
+  mockRouter = jasmine.createSpyObj('Router',['navigate'])
+  await TestBed.configureTestingModule({
+    declarations: [ LoginComponent ],
+    imports:[FormsModule, ReactiveFormsModule,HttpClientTestingModule ],
+    providers:[{provide: LoginService, useValue:mockLoginService},
+    {provide:Router, useValue:mockRouter, FormBuilder}]
+  })
+    component.loginForm.controls['username'].setValue('user');
+    component.loginForm.controls['password'].setValue('user');
+    expect(component.loginForm.valid).toBeTruthy();
+    expect(debugElement.nativeElement.querySelector('button[type="submit"]').disabled).toBeFalsy;
+
