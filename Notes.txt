@@ -178,3 +178,9 @@ Eg: products-list.component.spec.ts
     component.ngOnInit();
     expect(component.ngOnInit).toHaveBeenCalled();
 
+Testing Angular Pipes using Jasmine:
+
+Eg: sort.pipe.spec.ts
+    const pipe = new SortPipe();
+    const  sortedMobiles = pipe.transform(mobiles,'other');
+    expect(sortedMobiles).toEqual(mobiles)
