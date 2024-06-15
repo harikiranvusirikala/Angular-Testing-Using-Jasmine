@@ -146,8 +146,8 @@ Testing an Angular component which has a service dependency:
 A component-under-test doesn't have to be injected with real services as it is Unit Testing. A test-double or stub instead can be provided.
 
 Eg: login.component.spec.ts
-  mockLoginService = jasmine.createSpyObj('LoginService',['getUsers']);
-  mockRouter = jasmine.createSpyObj('Router',['navigate'])
+  const mockLoginService = jasmine.createSpyObj('LoginService',['getUsers']);
+  const mockRouter = jasmine.createSpyObj('Router',['navigate'])
   await TestBed.configureTestingModule({
     declarations: [ LoginComponent ],
     imports:[FormsModule, ReactiveFormsModule,HttpClientTestingModule ],
@@ -158,4 +158,23 @@ Eg: login.component.spec.ts
     component.loginForm.controls['password'].setValue('user');
     expect(component.loginForm.valid).toBeTruthy();
     expect(debugElement.nativeElement.querySelector('button[type="submit"]').disabled).toBeFalsy;
+
+Testing an Angular component which has a life cycle method:
+The ngOnInit() is a lifecycle hook in Angular that is called after the constructor is called and after the component's inputs have been initialized. It is used to perform any additional initialization that is required for the component.
+
+Eg: products-list.component.spec.ts
+    const loginServiceSpy = jasmine.createSpyObj('LoginService', ['getMobileData']);
+    TestBed.configureTestingModule({
+      declarations: [ProductsListComponent,SortPipe],
+      imports:[HttpClientTestingModule,FormsModule,ReactiveFormsModule],
+      providers:[{ provide: loginService, useValue: loginServiceSpy }]
+    });
+    fixture = TestBed.createComponent(ProductsListComponent);
+    component = fixture.componentInstance;
+    loginService = TestBed.inject(LoginService) as jasmine.SpyObj<LoginService>;
+    fixture.detectChanges();
+
+    spyOn(component, 'ngOnInit').and.callThrough();
+    component.ngOnInit();
+    expect(component.ngOnInit).toHaveBeenCalled();
 
