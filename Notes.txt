@@ -227,3 +227,12 @@ component.someMethodThatUsesTheService();
   This line is likely invoking a method (`someMethodThatUsesTheService`) of the component under test. This method likely utilizes the injected service in some way.
 expect(service.methodName).toHaveBeenCalled();
   This assertion checks whether the `methodName` of the service has been called during the execution of `someMethodThatUsesTheService` of the component. If the method has been called, the test will pass.
+
+Testing asynchronous operations in the component that involve the injected service:
+it('should handle asynchronous operation', fakeAsync(() => {
+  spyOn(service, 'asyncMethod').and.returnValue(of('mockedAsyncData'));
+  component.triggerAsyncOperation();
+  tick();
+  expect(component.asyncData).toEqual('mockedAsyncData');
+}));
+
