@@ -184,3 +184,14 @@ Eg: sort.pipe.spec.ts
     const pipe = new SortPipe();
     const  sortedMobiles = pipe.transform(mobiles,'other');
     expect(sortedMobiles).toEqual(mobiles)
+
+Testing Angular Services using Jasmine
+
+HttpClientTestingModule:
+• Configures HttpClientTestingBackend as the HttpBackend used by HttpClient to make any request. 
+• HttpClientTestingBackend is a mock back-end that acts as a server. 
+• It will provide a response if any request comes for the configured method.
+
+HttpTestingController:
+• Controller to be injected into tests, that allows for mocking and flushing of requests.
+
