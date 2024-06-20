@@ -220,3 +220,10 @@ const service = fixture.debugElement.injector.get(YourService);
 expect(service).toBeTruthy();
   This line checks whether the service variable is truthy, indicating that the service has been successfully injected into the component.
 
+Mocking a service method using Jasmine spies to control its behaviour:
+spyOn(service, 'methodName').and.returnValue('mockedValue');
+  This line sets up a spy on the methodName of the injected service. Spies are used in testing to intercept and track calls to functions. By spying on this method, the test can verify whether it is called and control its behavior during the test. In this case, it's also specifying that when the method is called, it should return 'mockedValue'.
+component.someMethodThatUsesTheService();
+  This line is likely invoking a method (`someMethodThatUsesTheService`) of the component under test. This method likely utilizes the injected service in some way.
+expect(service.methodName).toHaveBeenCalled();
+  This assertion checks whether the `methodName` of the service has been called during the execution of `someMethodThatUsesTheService` of the component. If the method has been called, the test will pass.
