@@ -185,7 +185,7 @@ Eg: sort.pipe.spec.ts
     const  sortedMobiles = pipe.transform(mobiles,'other');
     expect(sortedMobiles).toEqual(mobiles)
 
-Testing Angular Services using Jasmine
+Testing Angular Services using Jasmine:
 
 HttpClientTestingModule:
 • Configures HttpClientTestingBackend as the HttpBackend used by HttpClient to make any request. 
@@ -213,4 +213,10 @@ Eg: login.service.spec.ts
     expect(req.request.method).toBe('GET');
     req.flush(dummyData);
     httpMock.verify();
+
+Verifying that the component can be created with the service injected:
+const service = fixture.debugElement.injector.get(YourService);
+  This line retrieves an instance of a service named YourService using dependency injection. It's assuming that the service is provided at the level of the component's injector.
+expect(service).toBeTruthy();
+  This line checks whether the service variable is truthy, indicating that the service has been successfully injected into the component.
 
