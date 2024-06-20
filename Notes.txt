@@ -195,3 +195,22 @@ HttpClientTestingModule:
 HttpTestingController:
 • Controller to be injected into tests, that allows for mocking and flushing of requests.
 
+Eg: login.service.spec.ts
+    TestBed.configureTestingModule({
+      declarations: [LoginComponent, ProductsListComponent],
+      imports: [HttpClientTestingModule],
+      providers: [LoginService]
+    })
+      .compileComponents();
+    service = TestBed.inject(LoginService);
+    httpMock = TestBed.inject(HttpTestingController)
+
+    service.getMobileData().subscribe((data) => {
+      expect(data).toEqual(dummyData.mobiles);
+    });
+
+    const req = httpMock.expectOne('assets/mobiles.json');
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyData);
+    httpMock.verify();
+
