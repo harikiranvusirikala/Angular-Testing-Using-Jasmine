@@ -236,3 +236,9 @@ it('should handle asynchronous operation', fakeAsync(() => {
   expect(component.asyncData).toEqual('mockedAsyncData');
 }));
 
+Verifying that the component correctly injects service dependencies:
+const service = fixture.debugElement.injector.get(YourService);
+const dependency = fixture.debugElement.injector.get(YourDependency);
+expect(service).toBeTruthy();
+expect(dependency).toBeTruthy();
+
