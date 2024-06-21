@@ -214,6 +214,8 @@ Eg: login.service.spec.ts
     req.flush(dummyData);
     httpMock.verify();
 
+Example Scenarios for Testing Services:
+===
 Verifying that the component can be created with the service injected:
 const service = fixture.debugElement.injector.get(YourService);
   This line retrieves an instance of a service named YourService using dependency injection. It's assuming that the service is provided at the level of the component's injector.
@@ -251,4 +253,15 @@ Testing how the component handles errors from the injected service:
 spyOn(service, 'errorMethod').and.returnValue(throwError('Some error'));
 component.triggerErrorMethod();
 expect(component.errorMessage).toEqual('Some error');
+
+Verifying that the component correctly configures the injected service:
+TestBed.configureTestingModule({
+declarations: [YourComponent],
+providers: [
+{ provide: YourService, useValue: { config: 'testConfig' } },
+],
+});
+const service = fixture.debugElement.injector.get(YourService);
+expect(service.config).toEqual('testConfig');
+===
 
