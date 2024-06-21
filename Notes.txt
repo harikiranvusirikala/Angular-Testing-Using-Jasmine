@@ -265,3 +265,22 @@ const service = fixture.debugElement.injector.get(YourService);
 expect(service.config).toEqual('testConfig');
 ===
 
+Testing Angular Routing using Jasmine:
+Angular uses the "navigate" method which attempts to navigate to the specified URL string using the router.
+The regular Router class is stub with RouterStub that can use the method "navigate".
+The method is spied to navigate that belongs to RouterStub.
+
+Eg: login.component.spec.ts
+  mockLoginService = jasmine.createSpyObj('LoginService',['getUsers']);
+  mockRouter = jasmine.createSpyObj('Router',['navigate'])
+
+    imports:[FormsModule, ReactiveFormsModule,HttpClientTestingModule ],
+    providers:[{provide: LoginService, useValue:mockLoginService},
+    {provide:Router, useValue:mockRouter, FormBuilder}]
+
+    const fakeCredentials = [{username:'user', password:'user'}];
+    mockLoginService.getUsers.and.returnValue(of(fakeCredentials));
+    component.loginForm.setValue({username:'user', password:'user'});
+    component.login();
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['products'])
+
