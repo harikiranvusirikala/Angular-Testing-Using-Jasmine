@@ -247,3 +247,8 @@ spyOn(service, 'someMethod');
 component.triggerServiceMethod();
 expect(dataService.someMethod).toHaveBeenCalled();
 
+Testing how the component handles errors from the injected service:
+spyOn(service, 'errorMethod').and.returnValue(throwError('Some error'));
+component.triggerErrorMethod();
+expect(component.errorMessage).toEqual('Some error');
+
