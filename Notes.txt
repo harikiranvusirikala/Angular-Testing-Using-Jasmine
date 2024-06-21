@@ -284,3 +284,21 @@ Eg: login.component.spec.ts
     component.login();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['products'])
 
+Code Coverage:
+$ ng test --no-watch --code-coverage
+
+This command will execute our Jasmine tests and generate code coverage reports.
+After running the tests, we'll find code coverage reports in the `coverage` directory of our project.
+Open the `index.html` file in our browser to view the detailed code coverage report.
+This code coverage report will show you which lines of code are covered (green) and which are not (red).
+It provides information on the percentage of code covered by your tests.
+
+Best Practices with respect to code coverage:
+Aim for high code coverage, but remember that 100% coverage is not always necessary or even practical.
+Focus on testing critical parts of our code.
+
+About Lines, Functions, Branch, Statement:
+• Line coverage, also known as statement coverage, measures the number of executable lines in our code that were executed during our tests. It helps ensure that every line of our code is tested, reducing the likelihood of undiscovered bugs.
+• Function coverage tracks whether each function or method in our code has been called during the tests. Ensuring all functions are tested helps in detecting logic errors and unexpected code paths.
+• Branch coverage assesses if every possible branch or decision point in our code has been taken during testing. It's crucial conditional errors and making sure all branches of our code are considered.
+• Statement coverage, often referred to as line coverage, checks whether each executable statement in our code has been executed during testing. It helps identify lines of code that haven't been tested, reducing the risk of untested behavior.
