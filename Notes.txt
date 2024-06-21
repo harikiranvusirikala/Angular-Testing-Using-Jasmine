@@ -302,3 +302,30 @@ About Lines, Functions, Branch, Statement:
 • Function coverage tracks whether each function or method in our code has been called during the tests. Ensuring all functions are tested helps in detecting logic errors and unexpected code paths.
 • Branch coverage assesses if every possible branch or decision point in our code has been taken during testing. It's crucial conditional errors and making sure all branches of our code are considered.
 • Statement coverage, often referred to as line coverage, checks whether each executable statement in our code has been executed during testing. It helps identify lines of code that haven't been tested, reducing the risk of untested behavior.
+
+
+Summary: Unit Testing Angular with Jasmine:
+
+Angular Testing using Jasmine:
+The 'ng test' command in Angular performs unit testing by executing spec files through Angular CLI, TestBed, Karma, and Jasmine.
+TestBed is a vital utility providing a mock of the root module.
+The method configureTestingModule sets up the module environment, and createComponent returns a tested component instance.
+The detectChanges function in TestBed manages Angular change detection.
+It is crucial to avoid reconfiguring TestBed after calling createComponent to prevent issues with change detection.
+
+Testing Angular Components using Jasmine:
+The content discusses unit testing in Angular, emphasizing service dependency testing with stubs instead of real services.
+It illustrates this approach with LoginComponent using a LoginService stub.
+The importance of the ngOnInit lifecycle hook is highlighted for additional component initialization.
+The example of ProductListComponent using ngOnInit is presented as a case for testing the lifecycle method invocation.
+Overall, the content underscores best practices for testing service dependencies and lifecycle methods in Angular components.
+
+Testing Angular Services using Jasmine:
+Angular testing enables unit testing of HTTP services without actual requests using HttpClientTestingModule.
+This module configures a mock server, HttpClientTestingBackend, responding to requests based on configured methods.
+The HttpTestingController, injected into tests, facilitates request mocking and flushing.
+This approach focuses on verifying request URLs and ensuring proper responses, streamlining testing for HTTP services in Angular.
+
+Testing Angular Routing using Jasmine
+Angular testing for routing involves verifying component navigation using the "navigate" method in the router.
+The regular Router class is substituted with a stub, RouterStub, which includes the spied "navigate" method to ensure correct navigation under specific conditions in unit tests.
