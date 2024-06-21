@@ -242,3 +242,8 @@ const dependency = fixture.debugElement.injector.get(YourDependency);
 expect(service).toBeTruthy();
 expect(dependency).toBeTruthy();
 
+Using spies to mock service methods and assert their calls:
+spyOn(service, 'someMethod');
+component.triggerServiceMethod();
+expect(dataService.someMethod).toHaveBeenCalled();
+
